@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace UniversityManagementFinal.Models
 {
     using System;
@@ -25,7 +27,12 @@ namespace UniversityManagementFinal.Models
         }
     
         public int DepartmentId { get; set; }
+        [Display(Name = "Department Code")]
+        [Required(ErrorMessage = "You Have to Enter the Department Code.")]
+        [StringLength(7, MinimumLength = 2, ErrorMessage = "Department Code Must be 2 to 7 Character long.")]
         public string DepartmentCode { get; set; }
+        [Display(Name = "Department Name")]
+        [Required(ErrorMessage = "You Have to Enter the Department Name.")]
         public string DepartmentName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
