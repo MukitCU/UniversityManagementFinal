@@ -39,7 +39,7 @@ namespace UniversityManagementFinal.Controllers
         // GET: Course/Create
         public ActionResult Create()
         {
-            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "DepartmentCode");
+            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "DepartmentName");
             ViewBag.SemesterId = new SelectList(db.Semesters, "SemesterId", "SemesterNo");
             return View();
         }
@@ -73,7 +73,7 @@ namespace UniversityManagementFinal.Controllers
                 }
             }
 
-            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "DepartmentCode", course.DepartmentId);
+            ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "DepartmentName", course.DepartmentId);
             ViewBag.SemesterId = new SelectList(db.Semesters, "SemesterId", "SemesterNo", course.SemesterId);
             return View(course);
         }

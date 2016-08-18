@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace UniversityManagementFinal.Models
 {
     using System;
@@ -21,12 +23,29 @@ namespace UniversityManagementFinal.Models
         }
     
         public int TeacherId { get; set; }
+        [Display(Name = "Teacher Name")]
+        [Required(ErrorMessage = "You Have to Enter the Teacher Name.")]
         public string TeacherName { get; set; }
+        [Display(Name = "Address")]
+        [Required(ErrorMessage = "You Have to Enter the Address.")]
         public string TeacherAddress { get; set; }
+        [Display(Name = "Email")]
+        [Required(ErrorMessage = "You Have to Enter the Email.")]
+        [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "E-mail is not valid")]
         public string TeacherEmail { get; set; }
+        [Display(Name = "Contact No")]
+        [Required(ErrorMessage = "You Have to Enter the Contact No.")]
+        [RegularExpression(@"^01\d{9}$", ErrorMessage = "Mobile No is not valid")]
         public string TeacherContactNo { get; set; }
+        [Display(Name = "Designation")]
+        [Required(ErrorMessage = "You Have to Enter the Designation.")]
         public int DesignationId { get; set; }
+        [Display(Name = "Department")]
+        [Required(ErrorMessage = "You Have to Enter the Department.")]
         public int DepartmentId { get; set; }
+        [Display(Name = "Credit To Be Taken")]
+        [Required(ErrorMessage = "You Have to Enter the Credit To Be Taken.")]
+        [RegularExpression(@"^\d{1,5}(\.\d{1,3})?$", ErrorMessage = "Credit To Be Taken must have to be Non negative decimal no")]
         public double CreditToBeTaken { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
