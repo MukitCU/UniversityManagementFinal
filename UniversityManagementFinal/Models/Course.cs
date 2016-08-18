@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace UniversityManagementFinal.Models
 {
     using System;
@@ -24,11 +26,25 @@ namespace UniversityManagementFinal.Models
         }
     
         public int CourseId { get; set; }
+        [Display(Name = "Course Code")]
+        [Required(ErrorMessage = "You Have to Enter the Course Code.")]
+        [StringLength(int.MaxValue, MinimumLength = 5, ErrorMessage = "Course Code Must be at least 5 Character long.")]
         public string CourseCode { get; set; }
+        [Display(Name = "Course Name")]
+        [Required(ErrorMessage = "You Have to Enter the Course Name.")]
         public string CourseName { get; set; }
+        [Display(Name = "Course Credit")]
+        [Required(ErrorMessage = "You Have to Enter the Course Credit.")]
+        [Range(0.5, 5.0, ErrorMessage = "Credit Range must have to be .5 to 5.0")]
         public double CourseCredit { get; set; }
+        [Display(Name = "Course Description")]
+        [Required(ErrorMessage = "You Have to Enter the Course Description.")]
         public string CourseDescription { get; set; }
+        [Display(Name = "Department Name")]
+        [Required(ErrorMessage = "You Have to Enter the Department Code.")]
         public int DepartmentId { get; set; }
+        [Display(Name = "Semester No")]
+        [Required(ErrorMessage = "You Have to Enter the Semester No.")]
         public int SemesterId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
