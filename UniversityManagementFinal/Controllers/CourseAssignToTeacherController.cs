@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using UniversityManagementFinal.Models;
 
 namespace UniversityManagementFinal.Controllers
@@ -54,9 +55,21 @@ namespace UniversityManagementFinal.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CourseAssignToTeachers.Add(courseAssignToTeacher);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (!db.CourseAssignToTeachers.Any(catt => catt.CourseId == courseAssignToTeacher.CourseId))
+                {
+                    db.CourseAssignToTeachers.Add(courseAssignToTeacher);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    Response.Write("Course Already Assigned");
+                }
+
+            }
+            else
+            {
+                Response.Write("Model is not valid");
             }
 
             //ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseCode", courseAssignToTeacher.CourseId);
@@ -92,6 +105,7 @@ namespace UniversityManagementFinal.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 db.Entry(courseAssignToTeacher).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -184,5 +198,6 @@ namespace UniversityManagementFinal.Controllers
             }
             base.Dispose(disposing);
         }
+        
     }
 }
